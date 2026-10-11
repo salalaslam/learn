@@ -1,0 +1,41 @@
+{
+  "plugins": ["import", "unused-imports"],
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin", // Node built-ins: fs, path, etc.
+          "external", // External modules: react, lodash, etc.
+          "internal", // Internal modules
+          ["parent", "sibling", "index"], // Parent, sibling, and index imports
+          "object", // Imports of objects
+          "type", // Type imports
+        ],
+        "newlines-between": "never",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true,
+        },
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before",
+          },
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin"],
+      },
+    ],
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+      },
+    ],
+  },
+}
